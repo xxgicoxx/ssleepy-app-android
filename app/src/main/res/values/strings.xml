@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SSleepy</string>
+    <string name="nav_header_title">SSleepy</string>
+    <string name="nav_header_subtitle">https://github.com/xxgicoxx/</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_mouse">Mouse</string>
+    <string name="menu_settings">Settings</string>
+</resources>

@@ -1,0 +1,14 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="ic_menu_home" type="drawable">@drawable/ic_menu_home</item>
+    <item name="ic_menu_mouse" type="drawable">@drawable/ic_menu_mouse</item>
+    <item name="ic_play" type="drawable">@drawable/ic_play</item>
+    <item name="ic_next" type="drawable">@drawable/ic_next</item>
+    <item name="ic_previous" type="drawable">@drawable/ic_previous</item>
+    <item name="ic_volume_up" type="drawable">@drawable/ic_volume_up</item>
+    <item name="ic_volume_down" type="drawable">@drawable/ic_volume_down</item>
+    <item name="ic_mute" type="drawable">@drawable/ic_mute</item>
+    <item name="ic_fullscreen" type="drawable">@drawable/ic_fullscreen</item>
+    <item name="ic_close" type="drawable">@drawable/ic_close</item>
+    <item name="ic_shutdown" type="drawable">@drawable/ic_shutdown</item>
+    <item name="ic_restart" type="drawable">@drawable/ic_restart</item>
+</resources>
