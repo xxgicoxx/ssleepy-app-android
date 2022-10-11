@@ -15,7 +15,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/playPause"
             app:icon="@drawable/ic_play"
-            android:text="Play/Pause"
+            android:text="@string/home_playpause"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -32,7 +32,7 @@
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_previous"
             android:id="@+id/previous"
-            android:text="Previous"
+            android:text="@string/home_previous"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -42,10 +42,10 @@
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_next"
             android:id="@+id/next"
-            android:text="Next"
+            android:text="@string/home_next"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -58,16 +58,16 @@
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_volume_up"
             android:id="@+id/volumeUp"
-            android:text="Vol. Up"
+            android:text="@string/home_volumeup"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"/>
 
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_volume_down"
             android:id="@+id/volumeDown"
-            android:text="Vol. Down"
+            android:text="@string/home_volumedown"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -84,16 +84,16 @@
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_mute"
             android:id="@+id/mute"
-            android:text="Mute"
+            android:text="@string/home_mute"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"/>
 
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_fullscreen"
             android:id="@+id/fullscreen"
-            android:text="Fullscreen"
+            android:text="@string/home_fullscreen"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -106,41 +106,24 @@
         android:layout_height="0dip"
         android:orientation="horizontal"
         android:layout_weight="1" >
+
+        <com.google.android.material.button.MaterialButton
+            app:icon="@drawable/ic_restart"
+            android:id="@+id/refresh"
+            android:text="@string/home_refresh"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"/>
 
         <com.google.android.material.button.MaterialButton
             app:icon="@drawable/ic_close"
             android:id="@+id/close"
-            android:text="Close"
+            android:text="@string/home_close"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"/>
-
-        <com.google.android.material.button.MaterialButton
-            app:icon="@drawable/ic_restart"
-            android:id="@+id/restart"
-            android:text="Restart"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:orientation="horizontal"
-        android:layout_weight="1" >
-
-        <com.google.android.material.button.MaterialButton
-            app:icon="@drawable/ic_shutdown"
-            android:id="@+id/shutdown"
-            android:text="Shutdown"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

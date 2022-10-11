@@ -2,7 +2,9 @@ package com.example.ssleepy.controllers;
 
 import android.content.Context;
 
+import com.example.ssleepy.models.Keyboard;
 import com.example.ssleepy.services.ApiService;
+import com.example.ssleepy.utils.Utils;
 
 public class ApiController {
 
@@ -47,6 +49,11 @@ public class ApiController {
         apiService.post("/fullscreen/");
     }
 
+    public void refresh() {
+        ApiService apiService = new ApiService(context);
+        apiService.post("/refresh/");
+    }
+
     public void close() {
         ApiService apiService = new ApiService(context);
         apiService.post("/close/");
@@ -70,5 +77,14 @@ public class ApiController {
     public void rightClick() {
         ApiService apiService = new ApiService(context);
         apiService.post("/rightclick/");
+    }
+
+    public void write(String value) {
+        ApiService apiService = new ApiService(context);
+
+        Keyboard keyboard = new Keyboard();
+        keyboard.setText(value);
+
+        apiService.post("/write/", Utils.objectToJson(keyboard));
     }
 }

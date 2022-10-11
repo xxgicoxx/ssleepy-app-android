@@ -11,6 +11,14 @@
         android:orientation="vertical"
         android:layout_weight="1" >
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/settings_ip"
+            app:endIconMode="clear_text"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtIp"
             android:layout_width="match_parent"
@@ -18,10 +26,11 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
-            android:text="Save"
+            android:text="@string/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

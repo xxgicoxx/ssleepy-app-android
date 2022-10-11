@@ -2,7 +2,6 @@ package com.example.ssleepy.ui.mouse;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -16,16 +15,9 @@ import androidx.fragment.app.Fragment;
 import com.example.ssleepy.R;
 import com.example.ssleepy.controllers.ApiController;
 import com.example.ssleepy.models.Mouse;
+import com.example.ssleepy.services.SocketIOService;
+import com.example.ssleepy.utils.Utils;
 import com.github.nkzawa.socketio.client.Socket;
-import com.github.nkzawa.socketio.client.IO;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URISyntaxException;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MouseFragment extends Fragment {
 
@@ -35,10 +27,10 @@ public class MouseFragment extends Fragment {
     private boolean moved = false;
 
     private Context context;
-    private Socket mSocket;
+    private Socket socket;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         this.context = context;
         super.onAttach(context);
     }
@@ -46,11 +38,9 @@ public class MouseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_mouse, container, false);
 
-        final SharedPreferences prefs = context.getSharedPreferences("settings", MODE_PRIVATE);
-        final String ip = prefs.getString("ip", "http://192.168.0.1:1905");
         final Mouse mouse = new Mouse();
 
-        socketConnect(ip);
+        socketConnect();
 
         root.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent e) {
@@ -65,7 +55,7 @@ public class MouseFragment extends Fragment {
                     mouse.setX(e.getX() - lastPosX);
                     mouse.setY(e.getY() - lastPosY);
 
-                    mSocket.emit("movemouse", objectToJson(mouse));
+                    socket.emit("movemouse", Utils.objectToJson(mouse));
 
                     lastPosX = e.getX();
                     lastPosY = e.getY();
@@ -94,25 +84,7 @@ public class MouseFragment extends Fragment {
         return root;
     }
 
-    private void socketConnect(String ip) {
-        try {
-            mSocket = IO.socket(ip);
-            mSocket.connect();
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private JSONObject objectToJson(Mouse mouse) {
-        JSONObject obj = new JSONObject();
-
-        try {
-            final Gson gson = new Gson();
-            obj = new JSONObject(gson.toJson(mouse));
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        } finally {
-            return obj;
-        }
+    private void socketConnect() {
+        socket = SocketIOService.getSocketInstance(context).getSocket();
     }
 }

@@ -2,9 +2,32 @@
     <string name="app_name">SSleepy</string>
     <string name="nav_header_title">SSleepy</string>
     <string name="nav_header_subtitle">https://github.com/xxgicoxx/</string>
-    <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_mouse">Mouse</string>
     <string name="menu_settings">Settings</string>
+
+    <string name="home_playpause">Play/Pause</string>
+    <string name="home_previous">Previous</string>
+    <string name="home_next">Next</string>
+    <string name="home_volumeup">Vol. Up</string>
+    <string name="home_volumedown">Vol. Down</string>
+    <string name="home_mute">Mute</string>
+    <string name="home_fullscreen">Fullscreen</string>
+    <string name="home_close">Close</string>
+    <string name="home_refresh">Refresh</string>
+    <string name="home_restart">Restart</string>
+    <string name="home_shutdown">Shutdown</string>
+
+    <string name="keyboard_text">Text</string>
+    <string name="keyboard_netflix">Netflix</string>
+    <string name="keyboard_prime">Prime Video</string>
+    <string name="keyboard_hbo">HBO Max</string>
+    <string name="keyboard_disney">Disney+</string>
+    <string name="keyboard_apple">Apple TV</string>
+    <string name="keyboard_star">Star+</string>
+
+    <string name="settings_ip">IP</string>
+
+    <string name="save">Save</string>
 </resources>
