@@ -3,7 +3,6 @@ package com.example.ssleepy.services;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,10 +11,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ssleepy.utils.APIConstants;
+import com.example.ssleepy.utils.PreferencesConstants;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -28,8 +28,8 @@ public class ApiService {
 
     public ApiService(Context context) {
         this.context = context;
-        this.prefs  = context.getSharedPreferences("settings", MODE_PRIVATE);
-        this.ip = prefs.getString("ip", "http://127.0.0.1:1905");
+        this.prefs  = context.getSharedPreferences(PreferencesConstants.PREFERENCES_SETTINGS, MODE_PRIVATE);
+        this.ip = prefs.getString(PreferencesConstants.PREFERENCES_IP, APIConstants.IP_DEFAULT);
     }
 
     public void post(String uri) {
@@ -56,7 +56,7 @@ public class ApiService {
         ) {
             @Override
             public String getBodyContentType() {
-                return "application/json; charset=utf-8";
+                return APIConstants.CONTENT_TYPE;
             }
 
             @Override

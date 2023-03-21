@@ -2,8 +2,10 @@ package com.example.ssleepy.services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.provider.Settings;
 
+import com.example.ssleepy.utils.APIConstants;
+import com.example.ssleepy.utils.PreferencesConstants;
+import com.example.ssleepy.utils.SocketConstants;
 import com.github.nkzawa.engineio.client.transports.WebSocket;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
@@ -20,36 +22,35 @@ public class SocketIOService {
 
     private static final Map<String, SocketIOService> socketIOInitialization = new HashMap<>();
     private static final Map<String, Socket> sockets = new HashMap<>();
-    private static final String USER = "ANDROID";
 
     private String ip;
 
     private SocketIOService(Context context) {
-        final SharedPreferences prefs = context.getSharedPreferences("settings", MODE_PRIVATE);
+        final SharedPreferences prefs = context.getSharedPreferences(PreferencesConstants.PREFERENCES_SETTINGS, MODE_PRIVATE);
 
-        this.ip = prefs.getString("ip", "http://127.0.0.1:1905");
+        this.ip = prefs.getString(PreferencesConstants.PREFERENCES_IP, APIConstants.IP_DEFAULT);
 
-        socketIOInitialization.put(USER, connectSocket());
-        sockets.put(USER, this.socket);
+        socketIOInitialization.put(SocketConstants.USER, connectSocket());
+        sockets.put(SocketConstants.USER, this.socket);
     }
 
     public static SocketIOService getSocketInstance(Context context) {
-        if (null == socketIOInitialization.get(USER)) {
+        if (null == socketIOInitialization.get(SocketConstants.USER)) {
             new SocketIOService(context);
         }
 
-        return socketIOInitialization.get(USER);
+        return socketIOInitialization.get(SocketConstants.USER);
     }
 
     public Socket getSocket() {
-        return sockets.get(USER);
+        return sockets.get(SocketConstants.USER);
     }
 
     private SocketIOService connectSocket() {
         try {
             IO.Options options = new IO.Options();
             options.transports = new String[] { WebSocket.NAME };
-            options.query = "userId=" + USER;
+            options.query = String.format("userId=%s", SocketConstants.USER);
 
             socket = IO.socket(ip, options);
 

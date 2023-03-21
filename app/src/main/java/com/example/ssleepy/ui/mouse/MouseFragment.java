@@ -16,6 +16,7 @@ import com.example.ssleepy.R;
 import com.example.ssleepy.controllers.ApiController;
 import com.example.ssleepy.models.Mouse;
 import com.example.ssleepy.services.SocketIOService;
+import com.example.ssleepy.utils.SocketConstants;
 import com.example.ssleepy.utils.Utils;
 import com.github.nkzawa.socketio.client.Socket;
 
@@ -55,7 +56,7 @@ public class MouseFragment extends Fragment {
                     mouse.setX(e.getX() - lastPosX);
                     mouse.setY(e.getY() - lastPosY);
 
-                    socket.emit("movemouse", Utils.objectToJson(mouse));
+                    socket.emit(SocketConstants.EMIT_MOVE_MOUSE, Utils.objectToJson(mouse));
 
                     lastPosX = e.getX();
                     lastPosY = e.getY();

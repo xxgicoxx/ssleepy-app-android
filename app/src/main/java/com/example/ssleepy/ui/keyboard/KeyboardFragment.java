@@ -17,6 +17,8 @@ import com.example.ssleepy.R;
 import com.example.ssleepy.controllers.ApiController;
 import com.example.ssleepy.models.Keyboard;
 import com.example.ssleepy.services.SocketIOService;
+import com.example.ssleepy.utils.LinkConstants;
+import com.example.ssleepy.utils.SocketConstants;
 import com.example.ssleepy.utils.Utils;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.textfield.TextInputEditText;
@@ -26,13 +28,6 @@ public class KeyboardFragment extends Fragment {
 
     private Context context;
     private Socket socket;
-
-    private static String NETFLIX = "https://www.netflix.com";
-    private static String PRIME = "https://www.primevideo.com";
-    private static String HBO = "https://play.hbomax.com";
-    private static String DISNEY = "https://www.disneyplus.com";
-    private static String APPLE = "https://tv.apple.com";
-    private static String STAR = "https://www.starplus.com";
 
     private int lastLength = 0;
     private int length = 0;
@@ -63,7 +58,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(NETFLIX);
+                apiController.write(LinkConstants.NETFLIX);
             }
         });
 
@@ -71,7 +66,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(PRIME);
+                apiController.write(LinkConstants.PRIME);
             }
         });
 
@@ -79,7 +74,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(HBO);
+                apiController.write(LinkConstants.HBO);
             }
         });
 
@@ -87,7 +82,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(DISNEY);
+                apiController.write(LinkConstants.DISNEY);
             }
         });
 
@@ -95,7 +90,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(APPLE);
+                apiController.write(LinkConstants.APPLE);
             }
         });
 
@@ -103,7 +98,7 @@ public class KeyboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ApiController apiController = new ApiController(context);
-                apiController.write(STAR);
+                apiController.write(LinkConstants.STAR);
             }
         });
 
@@ -120,9 +115,9 @@ public class KeyboardFragment extends Fragment {
 
                 if (length > lastLength) {
                     keyboard.setText(edtKeyboard.getText().toString().substring(lastLength, length));
-                    socket.emit("keyboard", Utils.objectToJson(keyboard));
+                    socket.emit(SocketConstants.EMIT_KEYBOARD, Utils.objectToJson(keyboard));
                 } else if (length < lastLength) {
-                    socket.emit("backspace", Utils.objectToJson(keyboard));
+                    socket.emit(SocketConstants.EMIT_BACKSPACE, Utils.objectToJson(keyboard));
                 }
 
                 lastLength = edtKeyboard.getText().length();
@@ -137,7 +132,7 @@ public class KeyboardFragment extends Fragment {
                 }
 
                 if(keyCode == KeyEvent.KEYCODE_DEL) {
-                    socket.emit("backspace", Utils.objectToJson(keyboard));
+                    socket.emit(SocketConstants.EMIT_BACKSPACE, Utils.objectToJson(keyboard));
                 }
 
                 return false;
