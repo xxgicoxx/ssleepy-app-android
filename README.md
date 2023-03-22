@@ -32,7 +32,7 @@ Application to control Windows remotely with Android.
 Open an existing Android Studio project > SSleepy.
 
 # Start
-Run > Run 'app'
+Run > Run 'app'.
 ````
 
 # Built With
