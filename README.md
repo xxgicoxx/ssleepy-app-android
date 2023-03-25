@@ -26,7 +26,7 @@ Application to control Windows remotely with Android.
 * [Android Studio](https://developer.android.com/studio/?gclid=CjwKCAjwzIH7BRAbEiwAoDxxTlrgZkmyizEw2L4qu6vmLIn4teX-87ir1-rnV_lOYI8Pfj6X65JOfBoCMBIQAvD_BwE&gclsrc=aw.ds)
 
 # Running
-### Run
+### 1. Run
 ````
 # Import Project on Android Studio
 Open an existing Android Studio project > SSleepy.
